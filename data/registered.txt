@@ -1,1 +1,1 @@
-testuser|testpass
+bob,bob
