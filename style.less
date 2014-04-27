@@ -1,0 +1,86 @@
+body {
+    background-color: #3333ff;
+}
+
+h1 {
+    color:  #ff7733;
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 20px;
+    transition: transform 2s;
+    -webkit-transition: -webkit-transform 2s;
+    &:hover {
+        transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+    }
+}
+
+.box {
+    text-align: center;
+    font-weight: bold;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 25%;
+    width: 50%;
+    background-color: #99ff00;
+    border: 7px groove #33cc00;
+    padding: 7px;
+}
+
+.blue {
+    color: #0000ff;
+}
+
+input {
+    &[type="submit"]{
+        color: #0000ff;
+        border-top: 1px solid #ddff99;
+        background-color: #ffcc00;
+        background: -webkit-gradient(linear, left top, left bottom, from(#ff9900), to(#ffff00));
+        background: -webkit-linear-gradient(top, #ff9900, #ffff00);
+        background: -moz-linear-gradient(top,#ff9900, #ffff00);
+        background: -ms-linear-gradient(top, #ff9900, #ffff00);
+        background: -o-linear-gradient(top, #ff9900, #ffff00);
+        padding: 5px 10px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+    }
+}
+
+a {
+        text-decoration: none;
+        color: #0000ff;
+        border-top: 1px solid #ddff99;
+        background-color: #ffcc00;
+        background: -webkit-gradient(linear, left top, left bottom, from(#ff9900), to(#ffff00));
+        background: -webkit-linear-gradient(top, #ff9900, #ffff00);
+        background: -moz-linear-gradient(top,#ff9900, #ffff00);
+        background: -ms-linear-gradient(top, #ff9900, #ffff00);
+        background: -o-linear-gradient(top, #ff9900, #ffff00);
+        padding: 5px 10px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+}
+
+table {
+    width: 90%;   
+}
+th {
+    border: 2px solid #336633;
+    background-color: #ffcc00;
+    color: #333377;
+}
+td {
+    border: 1px solid #336633;
+}
+
+ul {
+    list-style-type: none;
+    float: left;
+}
+
