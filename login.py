@@ -3,7 +3,25 @@ import cgi, cgitb
 cgitb.enable()
 
 form = cgi.FieldStorage()
-page=''
+page='Content-type: text/html\n\n'
+
+if 'user' in form and 'pw' in form:
+        user = form['user'].value
+        pw = form['pw'].value
+        page(user,pw)
+else:
+        page+='''
+<html>
+<head>
+<title>Whoops!</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+Please enter a valid username and password.
+</body>
+</html>'''
+        print page
+
 def logIn(username, passw):
         f=open('./data/registered.txt', 'r')
         read=f.read()
@@ -17,7 +35,7 @@ def logIn(username, passw):
                 return True
 def page(username,passw):
     if logIn(username,passw):   
-        page='''
+        page+='''
 <!--read this in with python and alter it as needed to create the home page-->
 
 <!--replace ***** with username in python in order to preserve identity throughout site-->
@@ -29,6 +47,7 @@ def page(username,passw):
   <head>
 
     <title> 'Sup </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 
   </head>
 
@@ -65,19 +84,20 @@ def page(username,passw):
 </html>
 
 '''
-        print (page)
+        print page
 
     else:
-        page='''
+        page+='''
 <html>
 <head>
 <title>Whoops!</title>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 Please enter a valid username and password.
 </body>
 </html>'''
-        print (page)
+        print page
 
 ##print ('Content-Type:text/html\n')
 
