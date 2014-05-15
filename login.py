@@ -3,24 +3,7 @@ import cgi, cgitb
 cgitb.enable()
 
 form = cgi.FieldStorage()
-page='Content-type: text/html\n\n'
-
-if 'user' in form and 'pw' in form:
-        user = form['user'].value
-        pw = form['pw'].value
-        page(user,pw)
-else:
-        page+='''
-<html>
-<head>
-<title>Whoops!</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-Please enter a valid username and password.
-</body>
-</html>'''
-        print page
+page='Content-Type: text/html\n\n'
 
 def logIn(username, passw):
         f=open('./data/registered.txt', 'r')
@@ -33,9 +16,10 @@ def logIn(username, passw):
                 
                 f.close()
                 return True
-def page(username,passw):
-    if logIn(username,passw):   
-        page+='''
+def makepage(username,passw):
+        global page
+        if logIn(username,passw):   
+                page+='''
 <!--read this in with python and alter it as needed to create the home page-->
 
 <!--replace ***** with username in python in order to preserve identity throughout site-->
@@ -84,10 +68,10 @@ def page(username,passw):
 </html>
 
 '''
-        print page
+                print page
 
-    else:
-        page+='''
+        else:
+                page+='''
 <html>
 <head>
 <title>Whoops!</title>
@@ -97,7 +81,7 @@ def page(username,passw):
 Please enter a valid username and password.
 </body>
 </html>'''
-        print page
+                print page
 
 ##print ('Content-Type:text/html\n')
 
@@ -107,19 +91,19 @@ Please enter a valid username and password.
 #username---- Whatever the user inputs ----
 
 def getData(username):
-    ans=''
-    f=open('./data/data.txt', 'r')
-    read=f.read()
-    q=read.find(username+'----')
-    i=read.find('----',q+len(username+'----'))
-    cow=read[q+len(username+'----'):i]
-    for s in cow:
-        if s=='\n':
-            ans+='<br>'
-        else:
-            ans+=s 
-    f.close()
-    return ans
+        ans=''
+        f=open('./data/data.txt', 'r')
+        read=f.read()
+        q=read.find(username+'----')
+        i=read.find('----',q+len(username+'----'))
+        cow=read[q+len(username+'----'):i]
+        for s in cow:
+                if s=='\n':
+                        ans+='<br>'
+                else:
+                        ans+=s 
+        f.close()
+        return ans
 
 def listFriends(username):
     f=open('./data/friends.txt', 'r')
@@ -184,3 +168,20 @@ def editData(username,newdata):
     f=open('./data/data.txt', 'w')
     f.write(s1)
     f.close()
+
+if 'user' in form and 'pw' in form:
+        user = form['user'].value
+        pw = form['pw'].value
+        makepage(user,pw)
+else:
+        page+='''
+<html>
+<head>
+<title>Whoops!</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+Please enter a valid username and password.
+</body>
+</html>'''
+        print page
