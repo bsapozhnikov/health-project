@@ -16,72 +16,7 @@ def logIn(username, passw):
                 
                 f.close()
                 return True
-def makepage(username,passw):
-        global page
-        if logIn(username,passw):   
-                page+='''
-<!--read this in with python and alter it as needed to create the home page-->
 
-<!--replace ***** with username in python in order to preserve identity throughout site-->
-
-
-
-<html>
-
-  <head>
-
-    <title> 'Sup </title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-
-  </head>
-
-  <body>
-
-    <div id="sidebar">
-
-      <h1>Friends</h1>
-      '''+listFriends(username)+'''
-    </div>
-
-    <div id="main">
-
-      
-
-	  
-
-      <div class="box">
-
-	<div class="name"> Name:'''+username+'''</div>
-
-	<div class="info">'''+getData(username)+'''</div>
-
-      </div>
-
-      
-
-      
-
-    </div>
-
-  </body>
-
-</html>
-
-'''
-                print page
-
-        else:
-                page+='''
-<html>
-<head>
-<title>Whoops!</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-Please enter a valid username and password.
-</body>
-</html>'''
-                print page
 
 ##print ('Content-Type:text/html\n')
 
@@ -168,6 +103,74 @@ def editData(username,newdata):
     f=open('./data/data.txt', 'w')
     f.write(s1)
     f.close()
+
+
+def makepage(username,passw):
+        global page
+        if logIn(username,passw):   
+                page+='''
+<!--read this in with python and alter it as needed to create the home page-->
+
+<!--replace ***** with username in python in order to preserve identity throughout site-->
+
+
+
+<html>
+
+  <head>
+
+    <title> 'Sup </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+
+  <body>
+
+    <div id="sidebar">
+
+      <h1>Friends</h1>
+      '''+listFriends(username)+'''
+    </div>
+
+    <div id="main">
+
+      
+
+	  
+
+      <div class="box">
+
+	<div class="name"> Name:'''+username+'''</div>
+
+	<div class="info">'''+getData(username)+'''</div>
+
+      </div>
+
+      
+
+      
+
+    </div>
+
+  </body>
+
+</html>
+
+'''
+                print page
+
+        else:
+                page+='''
+<html>
+<head>
+<title>Whoops!</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+Please enter a valid username and password.
+</body>
+</html>'''
+                print page
 
 if 'user' in form and 'pw' in form:
         user = form['user'].value
