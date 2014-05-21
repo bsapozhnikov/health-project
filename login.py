@@ -39,10 +39,25 @@ def getData(username):
                         ans+=s 
         f.close()
         return ans
+def otherData(username):
+        ans=''
+        f=open('./data/data.txt','r')
+        g=f.read().splitlines()
+        for line in g:
+                L=line.split('----')
+                ##L[0] is name; L[1] is aboutme
+                ans+='''
+      <div class="box">
 
+	<div class="name"> Name:'''+L[0]+'''</div>
+
+	<div class="info">'''+L[1]+'''</div>
+
+      </div><br>\n'''
+        return ans
 def listFriends(username):
     f=open('./data/friends.txt', 'r')
-    ans=""
+    ans=''
     read=f.read()
     q=read.find(username+'-')
     i=read.find('\n',q)
@@ -126,30 +141,31 @@ def makepage(username,passw):
 
   <body>
 
-    <div id="sidebar">
+    <div id="sidebar" class="box">
 
       <h1>Friends</h1>
       '''+listFriends(username)+'''
     </div>
 
-    <div id="main">
-
+    <div id="main">'''
+                               
+        
       
 
-	  
+                	  
+##                page+='''
+##      <div class="box">
+##
+##	<div class="name"> Name:'''+username+'''</div>
+##
+##	<div class="info">'''+getData(username)+'''</div>
+##
+##      </div>'''
 
-      <div class="box">
-
-	<div class="name"> Name:'''+username+'''</div>
-
-	<div class="info">'''+getData(username)+'''</div>
-
-      </div>
+                page+=otherData(username)
 
       
-
-      
-
+                page+='''
     </div>
 
   </body>
