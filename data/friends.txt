@@ -1,4 +1,4 @@
-fred- oink cows pig
-bob- fibber tibber chelsea julia
-julia- harry fred bob sam
+ahmed- julia
+bob- ahmed harry julia
+julia- harry bob
 harry-

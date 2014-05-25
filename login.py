@@ -39,10 +39,21 @@ def getData(username):
                         ans+=s 
         f.close()
         return ans
-def otherData(username):
+def otherData(username,password):
         ans=''
         f=open('./data/data.txt','r')
         g=f.read().splitlines()
+        f2=open('./data/friends.txt','r')
+        g2=f2.read().splitlines()
+        D2={}
+        for line in g2:
+                L=line.split('- ')
+                if len(L)>1:
+                        L1 = L[1].split(' ')
+                        ##L[0] is name; L1 is list of friends
+                        D2[L[0]]=L1
+                else:
+                        D2[(L[0])[:-1]]=[]
         for line in g:
                 L=line.split('----')
                 ##L[0] is name; L[1] is aboutme
@@ -51,8 +62,19 @@ def otherData(username):
 
 	<div class="name"> Name:'''+L[0]+'''</div>
 
-	<div class="info">'''+L[1]+'''</div>
+	<div class="info">'''+L[1]+'''</div>'''
+                ans+='\n<!--L[0]='+L[0]+', username='+username+', D2[L0]='+`D2[L[0]]`+' -->'
+                if (L[0] != username) and (L[0] not in D2[username]):
+                        ans+='''
+                        <form action="friend.py" method="post">
 
+                           <input type="hidden" name="user" value="'''+username+'''">
+                           <input type="hidden" name="friend" value="'''+L[0]+'''">
+                           <input type="hidden" name="pw" value="'''+password+'''">
+                           <input type="submit" value="Add Friend" name="friend">
+
+                        </form>'''
+                ans+='''
       </div><br>\n'''
         return ans
 def listFriends(username):
@@ -162,7 +184,7 @@ def makepage(username,passw):
 ##
 ##      </div>'''
 
-                page+=otherData(username)
+                page+=otherData(username,passw)
 
       
                 page+='''

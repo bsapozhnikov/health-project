@@ -21,10 +21,10 @@ addFriend(user,friend)
 page='Content-Type: text/html\n\n'
 page+='''<html><body>
 Congrats, you have a new friend!<br>
-    <form action="login.py" method="post" class="box" id="form">
+    <form action="login.py" method="post" class="box" id="form">
       <input type="hidden" name="pw" value="'''+pw+'''">
       <input type="hidden" name="user" value="'''+user+'''">
-      <input type="submit" value="Finish" name="Finish">
+      <input type="submit" value="Finish" name="Finish">
     </form></body></html>'''
     #Note: you might want to change the submit type if you want it to instantly
 #jump between friend and login. See three lines above.
