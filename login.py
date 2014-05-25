@@ -71,7 +71,7 @@ def otherData(username,password):
                            <input type="hidden" name="user" value="'''+username+'''">
                            <input type="hidden" name="friend" value="'''+L[0]+'''">
                            <input type="hidden" name="pw" value="'''+password+'''">
-                           <input type="submit" value="Add Friend" name="friend">
+                           <input type="submit" value="Add Friend" name="addfriend">
 
                         </form>'''
                 ans+='''
