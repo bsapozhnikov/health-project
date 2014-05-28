@@ -56,14 +56,17 @@ def otherData(username,password):
                         D2[(L[0])[:-1]]=[]
         for line in g:
                 L=line.split('----')
+                s = ''
+                if len(L)>1:
+                        s=L[1]
                 ##L[0] is name; L[1] is aboutme
                 ans+='''
       <div class="box">
 
 	<div class="name"> Name:'''+L[0]+'''</div>
 
-	<div class="info">'''+L[1]+'''</div>'''
-                ans+='\n<!--L[0]='+L[0]+', username='+username+', D2[L0]='+`D2[L[0]]`+' -->'
+	<div class="info">'''+s+'''</div>'''
+                ###ans+='\n<!--L[0]='+L[0]+', username='+username+', D2[L0]='+`D2[L[0]]`+' -->'
                 if (L[0] != username) and (L[0] not in D2[username]):
                         ans+='''
                         <form action="friend.py" method="post">
@@ -169,7 +172,9 @@ def makepage(username,passw):
       '''+listFriends(username)+'''
     </div>
 
-    <div id="main">'''
+    <div id="main">
+      <br>
+      <a href="login.html"> Log Out </a>'''
                                
         
       

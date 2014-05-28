@@ -56,6 +56,8 @@ This username has already been taken.
 <body>
 <div class="box">
 You are registered!
+<br><br><br>
+<a href="login.html"> Log In </a>
 </div>
 </body>
 </html>'''
