@@ -33,17 +33,17 @@ This username has already been taken.
         print page
     else:
         ##append data.txt
-        r=user+'----'+aboutme+'----\n'
+        r=user+'----'+aboutme+'----\r\n'
         f2=open('data/data.txt','a')
         f2.write(r)
         f2.close()
         ##append friends.txt
-        s=user+'-\n'
+        s=user+'-\r\n'
         f3=open('data/friends.txt','a')
         f3.write(s)
         f3.close()
         ##append registered.txt
-        t=user+','+pw+'\n'
+        t=user+','+pw+'\r\n'
         f4=open('data/registered.txt','a')
         f4.write(t)
         f4.close()
