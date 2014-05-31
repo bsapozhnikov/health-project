@@ -54,16 +54,24 @@ def otherData(username,password):
                         D2[L[0]]=L1
                 else:
                         D2[(L[0])[:-1]]=[]
-        for line in g:
+        i = 0
+        while i < len(g):
+                line = g[i]
                 L=line.split('----')
                 s = ''
                 if len(L)>1:
                         s=L[1]
-                ##L[0] is name; L[1] is aboutme
+                if len(g[i])<4 or g[i][-4:] != '----':
+                        i+=1
+                        while len(g[i])<4 or g[i][-4:] != '----':
+                                s+='<br>\n'+g[i]
+                                i+=1
+                        s+='<br>\n'+g[i].strip('----')
+                ##L[0] is name; s is aboutme
                 ans+='''
       <div class="box">
 
-	<div class="name"> Name:'''+L[0]+'''</div>
+	<div class="name"> '''+L[0]+'''</div>
 
 	<div class="info">'''+s+'''</div>'''
                 ###ans+='\n<!--L[0]='+L[0]+', username='+username+', D2[L0]='+`D2[L[0]]`+' -->'
@@ -79,6 +87,7 @@ def otherData(username,password):
                         </form>'''
                 ans+='''
       </div><br>\n'''
+                i+=1
         return ans
 def listFriends(username):
     f=open('./data/friends.txt', 'r')
@@ -210,7 +219,9 @@ def makepage(username,passw):
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+<div class="box">
 Please enter a valid username and password.
+</div>
 </body>
 </html>'''
                 print page
@@ -227,7 +238,9 @@ else:
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+<div class="box">
 Please enter a valid username and password.
+</div>
 </body>
 </html>'''
         print page
