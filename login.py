@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import cgi, cgitb
 cgitb.enable()
-
 form = cgi.FieldStorage()
 page='Content-Type: text/html\n\n'
 
@@ -68,6 +67,8 @@ def otherData(username,password):
                                 i+=1
                         s+='<br>\n'+g[i].strip('----')
                 ##L[0] is name; s is aboutme
+                s=cgi.escape(s)
+                s = s.replace('&lt;br&gt;','<br>')
                 ans+='''
       <div class="box">
 
